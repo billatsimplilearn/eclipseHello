@@ -1,7 +1,10 @@
 package com.simplilearn.java.hello;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -11,7 +14,34 @@ public class CollectionsDemo {
 //		arraysDemo();
 //		genericsDemo();
 //		iterationDemo();
-		joinDemo() ;
+//		joinDemo() ;
+		listDemo();
+	}
+
+	private static void listDemo() {
+		List <String> strs = new ArrayList <> () ;
+		strs.add ( "foo" ) ;
+		strs.add ( "bar" ) ;
+		strs.add ( "foo" ) ;
+		strs.add ( "bar" ) ;
+		strs.add ( "foo" ) ;
+		strs.add ( "bar" ) ;
+		strs.add ( "foo" ) ;
+		strs.add ( "bar" ) ;
+		strs.add ( "foo" ) ;
+		strs.add ( "bar" ) ;
+		strs.add ( "foo" ) ;
+		strs.add ( "bar" ) ;
+		strs.add ( "foo" ) ;
+		strs.add ( "bar" ) ;
+		strs.add ( "foo" ) ;
+		strs.add ( "bar" ) ;
+		strs.add ( "foo" ) ;
+		strs.add ( "bar" ) ;
+		strs.add ( 10, "monkeywrench" ) ;
+		for ( String s : strs ) {
+			System.out.println ( s ) ;
+		}
 	}
 
 	private static void joinDemo() {
