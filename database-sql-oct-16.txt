@@ -1,0 +1,149 @@
+
+
+create table categories (
+	id bigint auto_increment primary key,
+	name varchar(255) not null,
+	kidsCategory bit default 0
+) ;
+
+
+create table sections (
+	id bigint auto_increment primary key,
+	name varchar(255),
+	kidsCategory bit default 0
+) ;
+
+drop table books ;
+
+create table books (
+	id bigint auto_increment primary key,
+	name varchar(1000),
+	publication_date date,
+	publisher varchar(1000),
+	price decimal(10,2),
+	category_id bigint not null,
+	constraint FK_BOOK_CATEGORY foreign key (category_id) references categories (id) on delete cascade
+) ;
+
+create table authors (
+	id bigint auto_increment primary key,
+	name varchar(1000)
+) ;
+
+create table bookauthors (
+	book_id bigint,
+	author_id bigint,
+	constraint FK_BOOKAUTHOR_BOOK foreign key (book_id) references books (id),
+	constraint FK_BOOKAUTHOR_AUTHOR foreign key (author_id) references authors (id)
+) ;
+
+
+insert into categories (name) values ('History');
+insert into categories (name) values ('Science');
+insert into categories (name) values ('Fiction');
+insert into categories (name) values ('Cookbooks');
+insert into categories (name) values ('Biography');
+
+select * from categories ;
+
+insert into books (name, price, category_id) values ('To Serve Man', 19.95, 4);
+
+select * from books ;
+
+delete from categories where id = 4 ;
+
+create table semesters (
+	id bigint auto_increment primary key,
+	name varchar(1000)
+) ;
+
+create table courses (
+	id bigint auto_increment primary key,
+	name varchar(1000),
+	semester_id bigint,
+	constraint FK_COURSE_SEMS foreign key (semester_id) references semesters (id) on delete cascade -- because composition
+) ;
+
+alter table courses add (
+	instructor_id bigint,
+	constraint KF_COURSES_INSTR foreign key (instructor_id) references instructors (id) -- NOT on delete cascade because aggragation
+) ;
+
+create table instructors (
+	id bigint auto_increment primary key,
+	name varchar(1000)
+) ;
+
+insert into instructors (name) values ('Jim Bob') ;
+insert into instructors (name) values ('Mary Sue') ;
+
+update courses set instructor_id = 2 where id = 6 ;
+
+
+
+select * from instructors ;
+
+select * from courses ;
+
+delete from instructors where id = 1 ;
+
+insert into semesters (name) values ('2023Q3');
+
+insert into semesters (name) values ('2023Q4');
+
+
+select * from semesters ;
+
+insert into courses (name, semester_id) values ('Math', 1) ;
+
+insert into courses (name, semester_id) values ('Math', 2) ;
+
+insert into courses (name, semester_id) values ('History', 1) ;
+
+insert into courses (name, semester_id) values ('History', 2) ;
+
+insert into courses (name, semester_id) values ('Physics', 1) ;
+
+insert into courses (name, semester_id) values ('Physics', 2) ;
+
+delete from semesters where id = 2 ;
+
+
+select * from courses ;
+
+
+
+
+
+
+
+
+
+
+
+
+insert into category (name) values ('History') ;
+
+insert into category (name) values ('Science') ;
+
+insert into category (name) values ('Fiction') ;
+
+insert into category (name) values ('Cookbooks') ;
+
+select * from category ;
+
+delete from category where id = 1 ;
+
+create table store (
+	id bigint auto_increment primary key,
+	name varchar(1000)
+)
+
+create table product (
+	id bigint auto_increment primary key,
+	name varchar(1000)
+	store_id bigint
+)
+
+
+
