@@ -103,12 +103,12 @@ public class Point {
 	/**
 	 * Finds the distance between two points in pixels.
 	 * 
-	 * @param whatever must be a non-null point
+	 * @param that must be a non-null point
 	 * @return distance in pixels
 	 */
-	public double distance ( Point whatever ) {
-		return Math.sqrt ( ( this.x - whatever.x ) * ( this.x - whatever.x ) +     // can access that x and y
-					( this.y - whatever.y ) * ( this.y - whatever.y ) ) ;	// even though private
+	public double distance ( Point that ) {
+		return Math.sqrt ( ( this.x - that.x ) * ( this.x - that.x ) +     // can access that x and y
+					( this.y - that.y ) * ( this.y - that.y ) ) ;	// even though private
 	}
 
 	// if there is a main (which most of the time there is not) it usually
